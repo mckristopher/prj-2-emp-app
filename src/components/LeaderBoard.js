@@ -22,7 +22,7 @@ function LeaderBoard(props) {
                     <tbody>
                         {
                             props.leaders.map((leader, i) => (
-                                <tr className="font-20">
+                                <tr key={leader.id} className="font-20">
                                     <td>{ i + 1 }</td>
                                     <td>
                                         <div className="leader-info">
@@ -33,8 +33,8 @@ function LeaderBoard(props) {
                                             </div>
                                         </div>
                                     </td>
-                                    <td>{leader.asked}</td>
                                     <td>{leader.answered}</td>
+                                    <td>{leader.asked}</td>
                                 </tr>
                             ))
                         }

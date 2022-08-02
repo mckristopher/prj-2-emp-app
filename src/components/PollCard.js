@@ -1,5 +1,4 @@
 import { connect } from "react-redux";
-import icons from '../icons';
 
 export function formatDate (timestamp) {
     const d = new Date(timestamp)
@@ -25,7 +24,7 @@ const mapStateToProps = ({ questions ,users }, props) => {
     return {
         id: props.id,
         author: users[info.author].name,
-        image: icons[info.author],
+        image: users[info.author].avatarURL,
         time: formatDate(info.timestamp)
     }
 }

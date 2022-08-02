@@ -1,0 +1,46 @@
+.create-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #ececfa;
+    width: 70%;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    border-radius: 15px;
+}
+
+.heading {
+    text-align: center;
+    color: #585cce;
+}
+
+.vote {
+    width: 200px;
+    height: 200px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: auto;
+    justify-content: center;
+    gap: 50px;
+}
+
+form input {
+    height: 30px;
+    font-size: 20px;
+}
+
+form input::placeholder {
+    color: lightgrey;
+    opacity: 1;
+  }
+
+form button {
+    width: 50% !important;
+    margin: auto;
+    height: 30px;
+}
