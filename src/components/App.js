@@ -10,7 +10,6 @@ import CreatePoll from "./CreatePoll";
 import Poll from "./Poll";
 import LeaderBoard from "./LeaderBoard";
 import Error from "./Error";
-import questions from "../reducers/questions";
 
 function App(props) {
 

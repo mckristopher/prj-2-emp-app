@@ -1,22 +1,35 @@
 import { connect } from "react-redux";
 import PollCard from "./PollCard";
+import { useState } from 'react';
 
 function Dashboard(props) {
+    const [ filter, setFilter ] = useState('1');
     return (
-        <div className="dashboard">
-            <div className="unanswered">
-                <h3>Unanswered</h3>
-                <hr />
-                <div className="poll-list">
-                    { props.unanswered.map((q) => <PollCard key={q} id={q}/>) }
+        <div className="dashboard-container">
+            <select className="filter" onChange={(e) => setFilter(e.target.value)}>
+                <option value="1">Unanswered</option>
+                <option value="2">Answered</option>
+                <option value="">All</option>
+            </select>
+            <div className="dashboard">
+            { filter !== '2' && (
+                <div className="unanswered">
+                    <h3>Unanswered</h3>
+                    <hr />
+                    <div className="poll-list">
+                        { props.unanswered.map((q) => <PollCard key={q} id={q}/>) }
+                    </div>
                 </div>
-            </div>
-            <div className="answered">
-                <h3>Answered</h3>
-                <hr />
-                <div className="poll-list">
-                    { props.answered.map((q) => <PollCard key={q} id={q}/>) }
+            )}
+            { filter !== 1 && (
+                <div className="answered">
+                    <h3>Answered</h3>
+                    <hr />
+                    <div className="poll-list">
+                        { props.answered.map((q) => <PollCard key={q} id={q}/>) }
+                    </div>
                 </div>
+            )}
             </div>
         </div>
     )

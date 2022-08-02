@@ -10,6 +10,15 @@
     border-radius: 15px;
 }
 
+.poll-container.result {
+    flex-direction: row !important;
+    gap: 75px;
+}
+
+.poll-pie {
+    width: 400px;
+}
+
 .poll-form {
     display: flex;
     flex-direction: column;
