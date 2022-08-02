@@ -10,6 +10,7 @@ import CreatePoll from "./CreatePoll";
 import Poll from "./Poll";
 import LeaderBoard from "./LeaderBoard";
 import Error from "./Error";
+import questions from "../reducers/questions";
 
 function App(props) {
 
@@ -35,8 +36,8 @@ function App(props) {
   );
 }
 
-const mapStateToProps = ({ authedUser }) => ({
-  loading: authedUser === null,
+const mapStateToProps = ({ authedUser, questions, users }) => ({
+  loading: authedUser === null || !Object.keys(questions).length || !Object.keys(users).length,
 });
 
 export default connect(mapStateToProps)(App);
