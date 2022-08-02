@@ -5,10 +5,13 @@ import { useEffect } from "react";
 
 import Header from "./Header";
 import { handleInitialData } from "../actions/common";
+import Dashboard from "./Dashboard";
+import CreatePoll from "./CreatePoll";
+import Poll from "./Poll";
+import LeaderBoard from "./LeaderBoard";
+import Error from "./Error";
 
 function App(props) {
-
-  const { dispatch } = props;
 
   useEffect(() => {
     props.dispatch(handleInitialData());
@@ -17,7 +20,13 @@ function App(props) {
     <Fragment>
     <div className="App">
       <Header />
-      <Routes></Routes>
+      <Routes>
+        <Route path="/" exact element={ <Dashboard />} />
+        <Route path="/new" element={ <CreatePoll />} />
+        <Route path="/poll/:id" element={ <Poll />} />
+        <Route path="/leaderboard" element={ <LeaderBoard />} />
+        <Route path="/error" element={ <Error />} />
+      </Routes>
     </div>
     </Fragment>
   );

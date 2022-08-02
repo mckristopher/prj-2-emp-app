@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
-const Header = () => {
+const Header = (props) => {
   return (
     <nav className="nav">
       <ul>
@@ -8,7 +9,7 @@ const Header = () => {
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/leader-board">Leader Board</Link>
+          <Link to="/leaderboard">Leader Board</Link>
         </li>
         <li>
           <Link to="/new">New Poll</Link>
@@ -18,4 +19,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default connect()(Header);
