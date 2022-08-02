@@ -19,7 +19,7 @@ function CreatePoll({ dispatch }) {
 
     return (
         <div className="create-container">
-            <img src="/images/vote.png" className="vote"/>
+            <img src="/images/vote.png" className="vote" alt="vote" />
             <h2 className="heading">Would You Rather?..</h2>
             <form onSubmit={handleSubmit}>
                 <input placeholder="Option One" type="text" onChange={(e) => setOptionOne(e.target.value)} />

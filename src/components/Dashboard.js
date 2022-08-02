@@ -8,14 +8,14 @@ function Dashboard(props) {
                 <h3>Unanswered</h3>
                 <hr />
                 <div className="poll-list">
-                    { props.unanswered.map((q) => <PollCard id={q}/>) }
+                    { props.unanswered.map((q) => <PollCard key={q} id={q}/>) }
                 </div>
             </div>
             <div className="answered">
                 <h3>Answered</h3>
                 <hr />
                 <div className="poll-list">
-                    { props.answered.map((q) => <PollCard id={q}/>) }
+                    { props.answered.map((q) => <PollCard key={q} id={q}/>) }
                 </div>
             </div>
         </div>
@@ -23,9 +23,6 @@ function Dashboard(props) {
 }
 
 const mapStateToProps = ({ questions, users, authedUser }) => {
-    if (!Object.keys(questions).length || !Object.keys(users).length) {
-        return { answered: [], unanswered: [] }
-    }
     let answered = Object.keys(users[authedUser]['answers']).sort(
         (a, b) => questions[b].timestamp - questions[a].timestamp
       );

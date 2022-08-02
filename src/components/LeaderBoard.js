@@ -26,7 +26,7 @@ function LeaderBoard(props) {
                                     <td>{ i + 1 }</td>
                                     <td>
                                         <div className="leader-info">
-                                            <img src={ leader.avatar } className="leader-avatar"/>
+                                            <img src={ leader.avatar } alt="Avatar" className="leader-avatar"/>
                                             <div>
                                                 <p><strong>{leader.name}</strong></p>
                                                 <p><em>{leader.id}</em></p>

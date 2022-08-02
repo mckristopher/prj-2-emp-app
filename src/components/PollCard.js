@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import { Link } from 'react-router-dom';
 
 export function formatDate (timestamp) {
     const d = new Date(timestamp)
@@ -8,13 +9,13 @@ export function formatDate (timestamp) {
 
 function PollCard(props) {
     return (
-        <div className="card" onClick="">
+        <Link className="card" to={ '/poll/' + props.id }>
             <img src={props.image} alt="Avatar" />
             <div className="container">
                 <h4><b>{props.author}</b></h4> 
                 <p>{props.time}</p> 
             </div>
-        </div>
+        </Link>
     )
 }
 
