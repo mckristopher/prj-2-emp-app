@@ -20,13 +20,16 @@ function App(props) {
     <Fragment>
     <div className="App">
       <Header />
-      <Routes>
-        <Route path="/" exact element={ <Dashboard />} />
-        <Route path="/new" element={ <CreatePoll />} />
-        <Route path="/poll/:id" element={ <Poll />} />
-        <Route path="/leaderboard" element={ <LeaderBoard />} />
-        <Route path="/error" element={ <Error />} />
-      </Routes>
+      
+      {props.loading === true ? null : (
+        <Routes>
+          <Route path="/" exact element={ <Dashboard />} />
+          <Route path="/new" element={ <CreatePoll />} />
+          <Route path="/poll/:id" element={ <Poll />} />
+          <Route path="/leaderboard" element={ <LeaderBoard />} />
+          <Route path="/error" element={ <Error />} />
+        </Routes>)
+      }
     </div>
     </Fragment>
   );
@@ -36,4 +39,4 @@ const mapStateToProps = ({ authedUser }) => ({
   loading: authedUser === null,
 });
 
-export default connect()(App);
+export default connect(mapStateToProps)(App);

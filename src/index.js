@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { createStore } from "redux";
 import { Provider } from "react-redux";
@@ -10,13 +10,13 @@ import App from './components/App';
 import './index.css';
 
 const store = createStore(reducer, middleware);
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+
+
+ReactDOM.render(
   <Provider store={store}>
-  <Router>
-    <App />
-  </Router>
-  <a href="https://www.flaticon.com/free-icons/man" title="man icons">Icons by itim2101</a>
-  </Provider>
-  
+    <Router>
+      <App />
+    </Router>
+  </Provider>,
+  document.getElementById("root")
 );

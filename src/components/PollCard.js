@@ -1,16 +1,33 @@
 import { connect } from "react-redux";
 import icons from '../icons';
 
+export function formatDate (timestamp) {
+    const d = new Date(timestamp)
+    const time = d.toLocaleTimeString('en-US')
+    return time.substr(0, 5) + time.slice(-2) + ' | ' + d.toLocaleDateString()
+  }
+
 function PollCard(props) {
     return (
-        <div className="card">
-            <img src={icons['johndoe']} alt="Avatar" />
+        <div className="card" onClick="">
+            <img src={props.image} alt="Avatar" />
             <div className="container">
-                <h4><b>John Doe</b></h4> 
-                <p>Architect & Engineer</p> 
+                <h4><b>{props.author}</b></h4> 
+                <p>{props.time}</p> 
             </div>
         </div>
     )
 }
 
-export default connect()(PollCard);
+const mapStateToProps = ({ questions ,users }, props) => {
+    let info = questions[props.id];
+
+    return {
+        id: props.id,
+        author: users[info.author].name,
+        image: icons[info.author],
+        time: formatDate(info.timestamp)
+    }
+}
+
+export default connect(mapStateToProps)(PollCard);

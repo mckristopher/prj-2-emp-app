@@ -4,14 +4,39 @@ import PollCard from "./PollCard";
 function Dashboard(props) {
     return (
         <div className="dashboard">
-            <div className="answered">
-                <PollCard />
-            </div>
             <div className="unanswered">
-                <PollCard />
+                <h3>Unanswered</h3>
+                <hr />
+                <div className="poll-list">
+                    { props.unanswered.map((q) => <PollCard id={q}/>) }
+                </div>
+            </div>
+            <div className="answered">
+                <h3>Answered</h3>
+                <hr />
+                <div className="poll-list">
+                    { props.answered.map((q) => <PollCard id={q}/>) }
+                </div>
             </div>
         </div>
     )
 }
 
-export default connect()(Dashboard);
+const mapStateToProps = ({ questions, users, authedUser }) => {
+    if (!Object.keys(questions).length || !Object.keys(users).length) {
+        return { answered: [], unanswered: [] }
+    }
+    let answered = Object.keys(users[authedUser]['answers']).sort(
+        (a, b) => questions[b].timestamp - questions[a].timestamp
+      );
+    let unanswered = Object.keys(questions).filter((q) => !answered.includes(q)).sort(
+        (a, b) => questions[b].timestamp - questions[a].timestamp
+      );
+
+    return {
+        answered,
+        unanswered
+    }
+  }
+
+export default connect(mapStateToProps)(Dashboard);
