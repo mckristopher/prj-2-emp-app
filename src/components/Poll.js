@@ -1,6 +1,7 @@
 import { connect } from "react-redux"
 import '../css/poll-page.css';
 import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { handleAnswerPoll } from "../actions/common";
 
 const withRouter = (Component) => {
     const ComponentWithRouterProp = (props) => {
@@ -13,16 +14,23 @@ const withRouter = (Component) => {
     return ComponentWithRouterProp;
   };
 
-function Poll(props) {
+function Poll({ question, author, dispatch }) {
+
+    const handleChoice = (answer) => {
+        dispatch(handleAnswerPoll({
+            id: question.id,
+            answer
+        }))
+    }
     return (
         <div className="poll-container">
-            <h2 className="heading"><em>{ props.author.name  }</em>  wants to know</h2>
-            <img src={props.author.avatarURL} className="vote" alt="Avatar" />
+            <h2 className="heading"><em>{ author.name  }</em>  wants to know</h2>
+            <img src={author.avatarURL} className="vote" alt="Avatar" />
             <h2 className="heading">Would You Rather?..</h2>
             <form className="poll-form">
-                <button type="submit">{props.question.optionOne.text}</button>
+                <input className="option-button" type="button" onClick={() => handleChoice('optionOne')} defaultValue={question.optionOne.text} />
                 <p className="heading">OR</p>
-                <button type="submit">{props.question.optionTwo.text}</button>
+                <input className="option-button" type="button" onClick={() => handleChoice('optionTwo')} defaultValue={question.optionTwo.text} />
             </form>
         </div>
     )

@@ -19,7 +19,7 @@
     gap: 35px;
 }
 
-.poll-form button {
+.poll-form .option-button {
     width: 70% !important;
     margin: auto;
     height: 50px;

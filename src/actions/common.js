@@ -2,11 +2,12 @@ import { getInitialData } from "../api";
 import { setAuthedUser } from "./authedUser";
 import { receiveQuestions } from "./questions";
 import { receiveUsers } from "./users";
-import { createPoll } from "../api";
+import { createPoll, answerPoll } from "../api";
 
 const AUTHED_ID = "tylermcginnis";
 
 export const ADD_QUESTION = "ADD_QUESTION";
+export const ADD_ANSWER = "ADD_ANSWER";
 
 export function handleInitialData() {
   return (dispatch) => {
@@ -25,6 +26,13 @@ export function addQuestion(question) {
   }
 }
 
+export function addAnswer(answer) {
+  return {
+    type: ADD_ANSWER,
+    ...answer
+  }
+}
+
 export function handleCreatePoll(options) {
   return (dispatch, getState) => {
     const { authedUser } = getState();
@@ -35,8 +43,24 @@ export function handleCreatePoll(options) {
     })
     .then((question) => dispatch(addQuestion(question)))
     .catch((error) => {
-      console.warn("Error in handleToggleTweet: ", error);
+      console.warn("Error in handleCreatePoll: ", error);
       alert("There was an error creating the poll. Try again.");
+    })
+  }
+}
+
+export function handleAnswerPoll({ id, answer }) {
+  return (dispatch, getState) => {
+    const { authedUser } = getState();
+    return answerPoll({
+      authedUser,
+      qid: id,
+      answer
+    })
+    .then(() => dispatch(addAnswer({ qid: id, answer, user: authedUser })))
+    .catch((error) => {
+      console.warn("Error in handleAnswerPoll: ", error);
+      alert("There was an error answering the poll. Try again.");
     })
   }
 }

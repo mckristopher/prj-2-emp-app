@@ -1,7 +1,8 @@
 import {
     _getQuestions,
     _getUsers,
-    _saveQuestion
+    _saveQuestion,
+    _saveQuestionAnswer
 } from './_DATA';
 
 export function getInitialData() {
@@ -16,4 +17,8 @@ export function getInitialData() {
 
 export function createPoll(question) {
     return _saveQuestion(question)
+}
+
+export function answerPoll(answer) {
+    return _saveQuestionAnswer(answer)
 }
