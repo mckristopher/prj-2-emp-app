@@ -16,5 +16,7 @@ root.render(
   <Router>
     <App />
   </Router>
+  <a href="https://www.flaticon.com/free-icons/man" title="man icons">Icons by itim2101</a>
   </Provider>
+  
 );

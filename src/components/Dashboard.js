@@ -1,8 +1,16 @@
-import { connect } from "react-redux"
+import { connect } from "react-redux";
+import PollCard from "./PollCard";
 
 function Dashboard(props) {
     return (
-        <p>This is the Dashboard</p>
+        <div className="dashboard">
+            <div className="answered">
+                <PollCard />
+            </div>
+            <div className="unanswered">
+                <PollCard />
+            </div>
+        </div>
     )
 }
 
