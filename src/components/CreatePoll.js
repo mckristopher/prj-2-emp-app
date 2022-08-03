@@ -1,10 +1,10 @@
 import { connect } from "react-redux";
 import { useState } from "react";
 import { handleCreatePoll } from '../actions/common';
-
+import { withRouter } from "../util/helper";
 import '../css/create-poll.css';
 
-function CreatePoll({ dispatch }) {
+function CreatePoll({ dispatch, router }) {
     const [optionOne, setOptionOne] = useState('');
     const [optionTwo, setOptionTwo] = useState('');
 
@@ -15,6 +15,8 @@ function CreatePoll({ dispatch }) {
 
         setOptionOne('');
         setOptionTwo('');
+
+        router.navigate('/home');
     }
 
     return (
@@ -30,4 +32,4 @@ function CreatePoll({ dispatch }) {
     )
 }
 
-export default connect()(CreatePoll);
+export default withRouter(connect()(CreatePoll));

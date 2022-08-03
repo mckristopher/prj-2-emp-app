@@ -1,28 +1,21 @@
 import { connect } from "react-redux"
 import '../css/poll-page.css';
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { withRouter } from "../util/helper";
 import { handleAnswerPoll } from "../actions/common";
 import { PieChart } from 'react-minimal-pie-chart';
 
-const withRouter = (Component) => {
-    const ComponentWithRouterProp = (props) => {
-      let location = useLocation();
-      let navigate = useNavigate();
-      let params = useParams();
-      return <Component {...props} router={{ location, navigate, params }} />;
-    };
-  
-    return ComponentWithRouterProp;
-  };
 
-function Poll({ question, author, answered, pie, answer, dispatch, navigate }) {
+function Poll({ question, author, answered, pie, answer, dispatch, router }) {
 
     const handleChoice = (answer) => {
         dispatch(handleAnswerPoll({
             id: question.id,
             answer
         }))
-        navigate('/poll/' + question.id)
+    }
+
+    if (typeof answered === 'undefined') {
+        router.navigate('/error');
     }
     return (
         <div>
@@ -72,6 +65,9 @@ function Poll({ question, author, answered, pie, answer, dispatch, navigate }) {
 }
 
 const mapStateToProps = ({ questions, users, authedUser }, props) => {
+    if (!authedUser) {
+        return {}
+    }
     const { id } = props.router.params,
         question = questions[id],
         userCount = Object.keys(users).length,

@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { Fragment } from "react";
 import { setAuthedUser } from '../actions/authedUser';
-import { useNavigate } from 'react-router-dom';
+import { withRouter } from "../util/helper";
 
-const Header = ({ user, dispatch}) => {
+const Header = ({ user, dispatch, router }) => {
   const authedUser = !!localStorage.getItem("authenticated");
   return (
     
@@ -30,8 +29,8 @@ const Header = ({ user, dispatch}) => {
               <span>{user.name}</span>
             </div>
             <Link to="/" onClick={() => {
-                localStorage.setItem('authenticated', null);
-                dispatch(setAuthedUser())
+                dispatch(setAuthedUser());
+                router.navigate('/');
               }
             }>Log Out</Link>
           </div>
@@ -47,4 +46,4 @@ const mapStateToProps = ({ authedUser, users }) => ({
     user: users[authedUser]
 })
 
-export default connect(mapStateToProps)(Header);
+export default withRouter(connect(mapStateToProps)(Header));
