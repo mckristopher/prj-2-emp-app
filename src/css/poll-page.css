@@ -19,6 +19,16 @@
     width: 400px;
 }
 
+.p-legend {
+    padding-left: 25%;
+}
+
+.legend {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+}
+
 .poll-form {
     display: flex;
     flex-direction: column;

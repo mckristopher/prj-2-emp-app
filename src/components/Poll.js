@@ -49,15 +49,21 @@ function Poll({ question, author, answered, pie, answer, dispatch }) {
                 <div className="poll-pie">
                 <PieChart 
                     data={pie} 
-                    label={(data) => data.dataEntry.title + ' - ' + data.dataEntry.count + ': '+ data.dataEntry.value.toFixed(2) + '%'} 
-                    radius={35} labelPosition={100}
-                    reveal={true}
+                    label={(data) => data.dataEntry.value ? data.dataEntry.value.toFixed(0) + '%' : ''} 
                     labelStyle={{
-                        fontSize: "5px",
-                        fontColor: "000000",
+                        fontSize: '5px'
                     }}
-
+                    labelPosition={55}
+                    radius={35}
                 />
+                <div>
+                    { pie.map((piece) => (
+                    <p className="p-legend">
+                        <span className="legend" style = {{ 'background-color': piece.color}}></span>
+                        <span> - {piece.title} ( {piece.count} )</span>
+                    </p>
+                    ))}
+                </div>
                 </div>
                 
             </div>
@@ -69,17 +75,18 @@ const mapStateToProps = ({ questions, users, authedUser }, props) => {
     const { id } = props.router.params,
         question = questions[id],
         userCount = Object.keys(users).length,
+        answered = Object.keys(users[authedUser].answers).includes(id),
         optionOnePercent = question.optionOne.votes.length/userCount,
         optionTwoPercent = question.optionTwo.votes.length/userCount;
     return {
         question,
         author: users[question.author],
-        answered: Object.keys(users[authedUser].answers).includes(id),
-        answer: question[users[authedUser].answers[id]].text,
+        answered,
+        answer: answered ? question[users[authedUser].answers[id]].text : null,
         pie: [
-            { title: question.optionOne.text, value: optionOnePercent, count: question.optionOne.votes.length, color: '#2085EC' },
-            { title: question.optionTwo.text, value: optionTwoPercent, count: question.optionTwo.votes.length, color: '#72B4EB' },
-            { title: 'No Answer', value: 1 - (optionOnePercent + optionTwoPercent), count: userCount - (question.optionOne.votes.length + question.optionTwo.votes.length), color: '#0A417A' }
+            { title: question.optionOne.text, value: optionOnePercent * 100, count: question.optionOne.votes.length, color: '#0A417A' },
+            { title: question.optionTwo.text, value: optionTwoPercent * 100, count: question.optionTwo.votes.length, color: '#72B4EB' },
+            { title: 'No Answer', value: (1 - (optionOnePercent + optionTwoPercent)) * 100, count: userCount - (question.optionOne.votes.length + question.optionTwo.votes.length), color: '#2085EC'}
         ]
     };
 };
