@@ -18,17 +18,6 @@ function App(props) {
     props.dispatch(handleInitialData());
   }, []);
 
-  // if (!props.authenticated) {
-  //   return (<Fragment>
-  //     <div className="App">
-        
-  //       <Routes>
-  //           <Route path="/" exact element={ <Login /> } />
-  //           <Route path='*' exact element={ <Error />} />
-  //         </Routes>
-  //     </div>
-  //     </Fragment>)
-  // }
   return (
     <Fragment>
     <div className="App">
@@ -36,10 +25,6 @@ function App(props) {
       
       {props.loading === true ? null : (
         <Routes>
-          {/* { props.authenticated ? 
-            <Route path="/" exact element={ <Dashboard /> } /> : 
-            <Route path="/" exact element={ <Login /> } />
-          } */}
           <Route path="/" exact element={ <Login /> } />
           <Route path="/home" element={ <Dashboard /> } />
           <Route path="/new" element={ <CreatePoll />} />

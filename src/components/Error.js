@@ -1,6 +1,6 @@
 import { connect } from "react-redux"
 
-function Error(props) {
+function Error() {
     return (
         <div className="error-container">
             <img src={ '/images/warning.png' } alt="error" width="200px"/>
