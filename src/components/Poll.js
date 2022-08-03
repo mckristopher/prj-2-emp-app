@@ -5,7 +5,7 @@ import { handleAnswerPoll } from "../actions/common";
 import { PieChart } from 'react-minimal-pie-chart';
 
 
-function Poll({ question, author, answered, pie, answer, dispatch, router }) {
+function Poll({ question, author, answered, pie, answer, dispatch, router, invalidQ }) {
 
     const handleChoice = (answer) => {
         dispatch(handleAnswerPoll({
@@ -15,8 +15,15 @@ function Poll({ question, author, answered, pie, answer, dispatch, router }) {
     }
 
     if (typeof answered === 'undefined') {
-        router.navigate('/error');
+        window.location = '/';  
+        return;
     }
+
+    if (invalidQ) {
+        window.location = '/error';  
+        return;
+    }
+    
     return (
         <div>
             { !answered ? (
@@ -51,8 +58,8 @@ function Poll({ question, author, answered, pie, answer, dispatch, router }) {
                 />
                 <div>
                     { pie.map((piece) => (
-                    <p className="p-legend">
-                        <span className="legend" style = {{ 'background-color': piece.color}}></span>
+                    <p key={piece.color} className="p-legend">
+                        <span className="legend" style = {{ 'backgroundColor': piece.color}}></span>
                         <span> - {piece.title} ( {piece.count} )</span>
                     </p>
                     ))}
@@ -68,9 +75,16 @@ const mapStateToProps = ({ questions, users, authedUser }, props) => {
     if (!authedUser) {
         return {}
     }
+
     const { id } = props.router.params,
-        question = questions[id],
-        userCount = Object.keys(users).length,
+        question = questions[id];
+
+    if (!question) {
+        return {
+            invalidQ: true
+        }
+    }
+    const userCount = Object.keys(users).length,
         answered = Object.keys(users[authedUser].answers).includes(id),
         optionOnePercent = question.optionOne.votes.length/userCount,
         optionTwoPercent = question.optionTwo.votes.length/userCount;

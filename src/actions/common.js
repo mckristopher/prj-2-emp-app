@@ -12,6 +12,8 @@ export const ADD_ANSWER = "ADD_ANSWER";
 export function handleInitialData() {
   return (dispatch) => {
       return getInitialData().then(({ questions, users}) => {
+        let session = localStorage.getItem('authenticated');
+        dispatch(setAuthedUser(session !== 'null' ? session: null))
         dispatch(receiveQuestions(questions));
         dispatch(receiveUsers(users));
       })

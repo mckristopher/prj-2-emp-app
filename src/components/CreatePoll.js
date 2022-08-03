@@ -3,8 +3,9 @@ import { useState } from "react";
 import { handleCreatePoll } from '../actions/common';
 import { withRouter } from "../util/helper";
 import '../css/create-poll.css';
+import { Navigate } from "react-router";
 
-function CreatePoll({ dispatch, router }) {
+function CreatePoll({ dispatch, router, authedUser }) {
     const [optionOne, setOptionOne] = useState('');
     const [optionTwo, setOptionTwo] = useState('');
 
@@ -17,6 +18,11 @@ function CreatePoll({ dispatch, router }) {
         setOptionTwo('');
 
         router.navigate('/home');
+    }
+
+    if (typeof authedUser === 'undefined') {
+        window.location = '/';
+        return;
     }
 
     return (

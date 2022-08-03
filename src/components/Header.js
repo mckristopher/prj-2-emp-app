@@ -4,11 +4,10 @@ import { setAuthedUser } from '../actions/authedUser';
 import { withRouter } from "../util/helper";
 
 const Header = ({ user, dispatch, router }) => {
-  const authedUser = !!localStorage.getItem("authenticated");
   return (
     
       <div className="header">
-        { authedUser && user ? (
+        { user ? (
         <>
           <nav className="nav">
             <ul>
@@ -29,6 +28,7 @@ const Header = ({ user, dispatch, router }) => {
               <span>{user.name}</span>
             </div>
             <Link to="/" onClick={() => {
+                localStorage.setItem("authenticated", null)
                 dispatch(setAuthedUser());
                 router.navigate('/');
               }

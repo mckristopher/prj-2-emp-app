@@ -43,7 +43,7 @@ function App(props) {
           <Route path="/" exact element={ <Login /> } />
           <Route path="/home" element={ <Dashboard /> } />
           <Route path="/new" element={ <CreatePoll />} />
-          <Route path="/poll/:id" element={ <Poll />} />
+          <Route path="/questions/:id" element={ <Poll />} />
           <Route path="/leaderboard" element={ <LeaderBoard />} />
           <Route path='*' exact element={ <Error />} />
         </Routes>)

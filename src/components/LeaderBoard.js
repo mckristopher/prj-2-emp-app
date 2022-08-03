@@ -2,6 +2,12 @@ import { connect } from "react-redux"
 import '../css/leaderboard.css';
 
 function LeaderBoard(props) {
+    
+    if (props.authedUser === null) {
+        window.location = '/';
+        return;
+    }
+
     return (
         <div className="container">
             <section id="leaderboard">
@@ -46,7 +52,7 @@ function LeaderBoard(props) {
     )
 }
 
-const mapStateToProps = ({ users }) => {
+const mapStateToProps = ({ users, authedUser }) => {
     let leaders = Object.keys(users).map((userId) => {
         let user = users[userId];
         return {
@@ -58,7 +64,8 @@ const mapStateToProps = ({ users }) => {
         }
     }).sort((a, b) => (b.asked + b.answered) - (a.asked + a.answered));
     return {
-        leaders
+        leaders,
+        authedUser
     };
 }
 

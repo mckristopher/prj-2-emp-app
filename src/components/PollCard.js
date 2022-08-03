@@ -9,7 +9,7 @@ export function formatDate (timestamp) {
 
 function PollCard(props) {
     return (
-        <Link className="card" to={ '/poll/' + props.id }>
+        <Link className="card" to={ '/questions/' + props.id }>
             <img src={props.image} alt="Avatar" />
             <div className="container">
                 <h4><b>{props.author}</b></h4> 

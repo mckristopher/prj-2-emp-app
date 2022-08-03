@@ -51,3 +51,7 @@
     cursor: pointer;
     font-size: 15px;
 }
+
+.poll-results {
+    text-align: center;
+}
