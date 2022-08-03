@@ -12,7 +12,6 @@ export const ADD_ANSWER = "ADD_ANSWER";
 export function handleInitialData() {
   return (dispatch) => {
       return getInitialData().then(({ questions, users}) => {
-        dispatch(setAuthedUser(AUTHED_ID));
         dispatch(receiveQuestions(questions));
         dispatch(receiveUsers(users));
       })

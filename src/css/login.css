@@ -1,0 +1,11 @@
+.login-container {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin: 50px auto;
+    align-items: center;
+}
+
+.login-container .user {
+    height: 30px;
+}

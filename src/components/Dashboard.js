@@ -1,9 +1,16 @@
 import { connect } from "react-redux";
 import PollCard from "./PollCard";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { Navigate } from "react-router-dom";
+import authedUser from "../reducers/authedUser";
 
 function Dashboard(props) {
     const [ filter, setFilter ] = useState('1');
+
+    if (!props.authedUser) {
+        return <Navigate replace to="/" />;
+    }
+    
     return (
         <div className="dashboard-container">
             <select className="filter" onChange={(e) => setFilter(e.target.value)}>
@@ -21,7 +28,7 @@ function Dashboard(props) {
                     </div>
                 </div>
             )}
-            { filter !== 1 && (
+            { filter !== '1' && (
                 <div className="answered">
                     <h3>Answered</h3>
                     <hr />
@@ -36,6 +43,11 @@ function Dashboard(props) {
 }
 
 const mapStateToProps = ({ questions, users, authedUser }) => {
+    if (!authedUser) {
+        return {
+            authedUser
+        }
+    }
     let answered = Object.keys(users[authedUser]['answers']).sort(
         (a, b) => questions[b].timestamp - questions[a].timestamp
       );
@@ -45,7 +57,8 @@ const mapStateToProps = ({ questions, users, authedUser }) => {
 
     return {
         answered,
-        unanswered
+        unanswered,
+        authedUser
     }
   }
 

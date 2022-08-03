@@ -4,7 +4,6 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { handleAnswerPoll } from "../actions/common";
 import { PieChart } from 'react-minimal-pie-chart';
 
-
 const withRouter = (Component) => {
     const ComponentWithRouterProp = (props) => {
       let location = useLocation();
@@ -16,13 +15,14 @@ const withRouter = (Component) => {
     return ComponentWithRouterProp;
   };
 
-function Poll({ question, author, answered, pie, answer, dispatch }) {
+function Poll({ question, author, answered, pie, answer, dispatch, navigate }) {
 
     const handleChoice = (answer) => {
         dispatch(handleAnswerPoll({
             id: question.id,
             answer
         }))
+        navigate('/poll/' + question.id)
     }
     return (
         <div>

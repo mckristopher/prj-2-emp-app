@@ -5,6 +5,7 @@ import { useEffect } from "react";
 
 import Header from "./Header";
 import { handleInitialData } from "../actions/common";
+import Login from "./Login";
 import Dashboard from "./Dashboard";
 import CreatePoll from "./CreatePoll";
 import Poll from "./Poll";
@@ -16,6 +17,18 @@ function App(props) {
   useEffect(() => {
     props.dispatch(handleInitialData());
   }, []);
+
+  // if (!props.authenticated) {
+  //   return (<Fragment>
+  //     <div className="App">
+        
+  //       <Routes>
+  //           <Route path="/" exact element={ <Login /> } />
+  //           <Route path='*' exact element={ <Error />} />
+  //         </Routes>
+  //     </div>
+  //     </Fragment>)
+  // }
   return (
     <Fragment>
     <div className="App">
@@ -23,11 +36,16 @@ function App(props) {
       
       {props.loading === true ? null : (
         <Routes>
-          <Route path="/" exact element={ <Dashboard />} />
+          {/* { props.authenticated ? 
+            <Route path="/" exact element={ <Dashboard /> } /> : 
+            <Route path="/" exact element={ <Login /> } />
+          } */}
+          <Route path="/" exact element={ <Login /> } />
+          <Route path="/home" element={ <Dashboard /> } />
           <Route path="/new" element={ <CreatePoll />} />
           <Route path="/poll/:id" element={ <Poll />} />
           <Route path="/leaderboard" element={ <LeaderBoard />} />
-          <Route path="/error" element={ <Error />} />
+          <Route path='*' exact element={ <Error />} />
         </Routes>)
       }
     </div>
@@ -35,8 +53,9 @@ function App(props) {
   );
 }
 
-const mapStateToProps = ({ authedUser, questions, users }) => ({
-  loading: authedUser === null || !Object.keys(questions).length || !Object.keys(users).length,
+const mapStateToProps = ({ questions, users, authedUser }) => ({
+  loading: !Object.keys(questions).length || !Object.keys(users).length,
+  authenticated: !authedUser === null
 });
 
 export default connect(mapStateToProps)(App);
