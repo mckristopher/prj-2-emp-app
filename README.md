@@ -30,4 +30,4 @@ Launches the test runner in the interactive watch mode.\
 
 ### Leaderboard - `http://localhost:3000/leaderboard`
 
-### New Poll - `http://localhost:3000/new`
+### New Poll - `http://localhost:3000/add`
