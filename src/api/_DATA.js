@@ -149,55 +149,71 @@ let users = {
   
   export function _saveQuestion (question) {
     return new Promise((res, rej) => {
-      const authedUser = question.author;
-      const formattedQuestion = formatQuestion(question)
-  
-      setTimeout(() => {
-        questions = {
-          ...questions,
-          [formattedQuestion.id]: formattedQuestion
-        }
-        
-        users = {
-          ...users,
-          [authedUser]: {
-            ...users[authedUser],
-            questions: users[authedUser].questions.concat([formattedQuestion.id])
+      try {
+        const authedUser = question.author;
+        const formattedQuestion = formatQuestion(question)
+    
+        setTimeout(() => {
+          try {
+          questions = {
+            ...questions,
+            [formattedQuestion.id]: formattedQuestion
           }
+          
+          users = {
+            ...users,
+            [authedUser]: {
+              ...users[authedUser],
+              questions: users[authedUser].questions.concat([formattedQuestion.id])
+            }
+          }
+    
+          res(formattedQuestion)
+        } catch(e) {
+          rej('Something went wrong while saving the question')
         }
-  
-        res(formattedQuestion)
-      }, 1000)
+        }, 1000)
+      } catch (e) {
+        rej('Something went wrong while saving the question')
+      }
     })
   }
   
   export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
     return new Promise((res, rej) => {
-      setTimeout(() => {
-        users = {
-          ...users,
-          [authedUser]: {
-            ...users[authedUser],
-            answers: {
-              ...users[authedUser].answers,
-              [qid]: answer
+      try {
+        setTimeout(() => {
+          try {
+            users = {
+              ...users,
+              [authedUser]: {
+                ...users[authedUser],
+                answers: {
+                  ...users[authedUser].answers,
+                  [qid]: answer
+                }
+              }
             }
-          }
-        }
-  
-        questions = {
-          ...questions,
-          [qid]: {
-            ...questions[qid],
-            [answer]: {
-              ...questions[qid][answer],
-              votes: questions[qid][answer].votes.concat([authedUser])
+      
+            questions = {
+              ...questions,
+              [qid]: {
+                ...questions[qid],
+                [answer]: {
+                  ...questions[qid][answer],
+                  votes: questions[qid][answer].votes.concat([authedUser])
+                }
+              }
             }
+      
+            res()
+          } catch (e) {
+            rej('Something went wrong while saving the answer')
           }
-        }
-  
-        res()
-      }, 500)
+        }, 500)
+      } catch (e) {
+        rej('Something went wrong while saving the answer')
+      }
     })
   }
   

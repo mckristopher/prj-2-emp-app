@@ -1,0 +1,370 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LeaderBoard should match snapshot 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="container"
+      >
+        <section
+          id="leaderboard"
+        >
+          <nav
+            class="ladder-nav"
+          >
+            <div
+              class="ladder-title"
+            >
+              <h1>
+                Standings
+              </h1>
+            </div>
+          </nav>
+          <table
+            class="leaderboard-results"
+            id="rankings"
+            width="100%"
+          >
+            <thead>
+              <tr
+                class="font-20"
+              >
+                <th>
+                  Rank
+                </th>
+                <th>
+                  Users
+                </th>
+                <th>
+                  Answered
+                </th>
+                <th>
+                  Asked
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                class="font-20"
+              >
+                <td>
+                  1
+                </td>
+                <td>
+                  <div
+                    class="leader-info"
+                  >
+                    <img
+                      alt="Avatar"
+                      class="leader-avatar"
+                      src="/images/snow.jpg"
+                    />
+                    <div>
+                      <p>
+                        <strong>
+                          Sarah Edo
+                        </strong>
+                      </p>
+                      <p>
+                        <em>
+                          sarahedo
+                        </em>
+                      </p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  4
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+              <tr
+                class="font-20"
+              >
+                <td>
+                  2
+                </td>
+                <td>
+                  <div
+                    class="leader-info"
+                  >
+                    <img
+                      alt="Avatar"
+                      class="leader-avatar"
+                      src="/images/leaf.jpg"
+                    />
+                    <div>
+                      <p>
+                        <strong>
+                          John Doe
+                        </strong>
+                      </p>
+                      <p>
+                        <em>
+                          johndoe
+                        </em>
+                      </p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  3
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+              <tr
+                class="font-20"
+              >
+                <td>
+                  3
+                </td>
+                <td>
+                  <div
+                    class="leader-info"
+                  >
+                    <img
+                      alt="Avatar"
+                      class="leader-avatar"
+                      src="/images/tyler.jpg"
+                    />
+                    <div>
+                      <p>
+                        <strong>
+                          Tyler McGinnis
+                        </strong>
+                      </p>
+                      <p>
+                        <em>
+                          tylermcginnis
+                        </em>
+                      </p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  2
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="container"
+    >
+      <section
+        id="leaderboard"
+      >
+        <nav
+          class="ladder-nav"
+        >
+          <div
+            class="ladder-title"
+          >
+            <h1>
+              Standings
+            </h1>
+          </div>
+        </nav>
+        <table
+          class="leaderboard-results"
+          id="rankings"
+          width="100%"
+        >
+          <thead>
+            <tr
+              class="font-20"
+            >
+              <th>
+                Rank
+              </th>
+              <th>
+                Users
+              </th>
+              <th>
+                Answered
+              </th>
+              <th>
+                Asked
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              class="font-20"
+            >
+              <td>
+                1
+              </td>
+              <td>
+                <div
+                  class="leader-info"
+                >
+                  <img
+                    alt="Avatar"
+                    class="leader-avatar"
+                    src="/images/snow.jpg"
+                  />
+                  <div>
+                    <p>
+                      <strong>
+                        Sarah Edo
+                      </strong>
+                    </p>
+                    <p>
+                      <em>
+                        sarahedo
+                      </em>
+                    </p>
+                  </div>
+                </div>
+              </td>
+              <td>
+                4
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+            <tr
+              class="font-20"
+            >
+              <td>
+                2
+              </td>
+              <td>
+                <div
+                  class="leader-info"
+                >
+                  <img
+                    alt="Avatar"
+                    class="leader-avatar"
+                    src="/images/leaf.jpg"
+                  />
+                  <div>
+                    <p>
+                      <strong>
+                        John Doe
+                      </strong>
+                    </p>
+                    <p>
+                      <em>
+                        johndoe
+                      </em>
+                    </p>
+                  </div>
+                </div>
+              </td>
+              <td>
+                3
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+            <tr
+              class="font-20"
+            >
+              <td>
+                3
+              </td>
+              <td>
+                <div
+                  class="leader-info"
+                >
+                  <img
+                    alt="Avatar"
+                    class="leader-avatar"
+                    src="/images/tyler.jpg"
+                  />
+                  <div>
+                    <p>
+                      <strong>
+                        Tyler McGinnis
+                      </strong>
+                    </p>
+                    <p>
+                      <em>
+                        tylermcginnis
+                      </em>
+                    </p>
+                  </div>
+                </div>
+              </td>
+              <td>
+                2
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
