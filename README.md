@@ -87,7 +87,7 @@ Launches the test runner in the interactive watch mode.
 
 ## Author
 
-[Mercy Christopher](https://github.com/mckristopher)
+Brought to life by [Mercy Christopher](https://github.com/mckristopher)
 
 
 ## Attribution
