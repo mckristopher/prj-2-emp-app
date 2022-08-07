@@ -30,10 +30,10 @@ function App(props) {
   return (
     <Fragment>
     <div className="App">
-      <Header />
       
       {props.loading === true ? null : (
         <AuthProvider>
+        <Header />
         <Routes>
           <Route path="/" exact element={ <Login /> } />
           <Route path="/home" element={ 

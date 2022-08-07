@@ -1,10 +1,7 @@
 import { getInitialData } from "../api";
-import { setAuthedUser } from "./authedUser";
 import { receiveQuestions } from "./questions";
 import { receiveUsers } from "./users";
 import { createPoll, answerPoll } from "../api";
-
-const AUTHED_ID = "tylermcginnis";
 
 export const ADD_QUESTION = "ADD_QUESTION";
 export const ADD_ANSWER = "ADD_ANSWER";

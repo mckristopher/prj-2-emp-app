@@ -22,9 +22,10 @@ function Login({ authedUser, dispatch }) {
         <div className="login-container">
             <img src={ 'images/vote.png' } className="vote" alt="Avatar" />
             <p>Login As:</p>
-            <select className="user" onChange={(e) => {
+            <select className="user" onChange={async (e) => {
                     dispatch(setAuthedUser(e.target.value));
-                    login().then(() => navigate( state?.path || '/home'));
+                    await login();
+                    navigate( state?.path || '/home');
                 }
             }>
                 <option>Select User..</option>

@@ -2,8 +2,11 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { setAuthedUser } from '../actions/authedUser';
 import { withRouter } from "../util/helper";
+import useAuth from '../util/useAuth';
 
 const Header = ({ user, dispatch, router }) => {
+  const { logout } = useAuth();
+
   return (
     
       <div className="header">
@@ -27,9 +30,9 @@ const Header = ({ user, dispatch, router }) => {
               <img src={user.avatarURL} width="50px" />
               <span>{user.name}</span>
             </div>
-            <Link to="/" onClick={() => {
-                localStorage.setItem("authenticated", null)
+            <Link to="/" onClick={async () => {
                 dispatch(setAuthedUser());
+                await logout();
                 router.navigate('/');
               }
             }>Log Out</Link>
