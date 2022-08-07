@@ -8,7 +8,6 @@ const Header = ({ user, dispatch, router }) => {
   const { logout } = useAuth();
 
   return (
-    
       <div className="header">
         { user ? (
         <>

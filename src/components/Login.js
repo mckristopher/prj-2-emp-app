@@ -12,7 +12,7 @@ const users = [
     { name: 'Tyler Mcginnis', id: 'tylermcginnis' }
 ]
 
-function Login({ authedUser, dispatch }) {
+function Login({ dispatch }) {
 
     const navigate = useNavigate();
     const { login } = useAuth();

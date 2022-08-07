@@ -5,9 +5,7 @@ import { handleAnswerPoll } from "../actions/common";
 import { PieChart } from 'react-minimal-pie-chart';
 import { Navigate } from "react-router-dom";
 
-function Poll({ question, author, answered, pie, answer, dispatch, router, invalidQ }) {
-
-    // const navigate = useNavigate();
+function Poll({ question, author, answered, pie, answer, dispatch, invalidQ }) {
 
     const handleChoice = (answer) => {
         dispatch(handleAnswerPoll({
