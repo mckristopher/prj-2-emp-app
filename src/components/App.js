@@ -1,7 +1,8 @@
 import { Fragment } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { connect } from "react-redux";
 import { useEffect } from "react";
+import { Navigate } from "react-router-dom";
 
 import Header from "./Header";
 import { handleInitialData } from "../actions/common";
@@ -11,6 +12,7 @@ import CreatePoll from "./CreatePoll";
 import Poll from "./Poll";
 import LeaderBoard from "./LeaderBoard";
 import Error from "./Error";
+import useAuth, { AuthProvider } from '../util/useAuth';
 
 function App(props) {
 
@@ -18,20 +20,45 @@ function App(props) {
     props.dispatch(handleInitialData());
   }, []);
 
+  function RequireAuth({ children }) {
+    const { authed } = useAuth();
+    const location = useLocation();
+  
+    return authed === true ? children : <Navigate to="/" replace state={{ path: location.pathname }} />;
+  }
+
   return (
     <Fragment>
     <div className="App">
       <Header />
       
       {props.loading === true ? null : (
+        <AuthProvider>
         <Routes>
           <Route path="/" exact element={ <Login /> } />
-          <Route path="/home" element={ <Dashboard /> } />
-          <Route path="/add" element={ <CreatePoll />} />
-          <Route path="/questions/:id" element={ <Poll />} />
-          <Route path="/leaderboard" element={ <LeaderBoard />} />
+          <Route path="/home" element={ 
+            <RequireAuth>
+              <Dashboard />
+            </RequireAuth>
+           } />
+          <Route path="/add" element={ 
+            <RequireAuth>
+              <CreatePoll />
+            </RequireAuth>
+           } />
+          <Route path="/questions/:id" element={ 
+            <RequireAuth>
+              <Poll />
+            </RequireAuth>
+           } />
+          <Route path="/leaderboard" element={ 
+            <RequireAuth>
+              <LeaderBoard />
+            </RequireAuth>
+           } />
           <Route path='*' exact element={ <Error />} />
-        </Routes>)
+        </Routes>
+        </AuthProvider>)
       }
     </div>
     </Fragment>

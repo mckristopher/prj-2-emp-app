@@ -1,7 +1,10 @@
 import { connect } from "react-redux";
+import { useNavigate, useLocation } from "react-router-dom";
+
+import { setAuthedUser } from "../actions/authedUser";
 import '../css/login.css';
-import { setAuthedUser } from '../actions/authedUser';
-import { Navigate } from "react-router-dom";
+
+import useAuth from '../util/useAuth';
 
 const users = [
     { name: 'John Doe', id: 'johndoe' },
@@ -10,18 +13,18 @@ const users = [
 ]
 
 function Login({ authedUser, dispatch }) {
-    if (authedUser) {
-        return <Navigate replace to="/home" />;
-    }
+
+    const navigate = useNavigate();
+    const { login } = useAuth();
+    const { state } = useLocation();
 
     return (
         <div className="login-container">
             <img src={ 'images/vote.png' } className="vote" alt="Avatar" />
             <p>Login As:</p>
             <select className="user" onChange={(e) => {
-
-                    localStorage.setItem("authenticated", e.target.value)
-                    dispatch(setAuthedUser(e.target.value))
+                    dispatch(setAuthedUser(e.target.value));
+                    login().then(() => navigate( state?.path || '/home'));
                 }
             }>
                 <option>Select User..</option>

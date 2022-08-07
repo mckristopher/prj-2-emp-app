@@ -3,9 +3,11 @@ import '../css/poll-page.css';
 import { withRouter } from "../util/helper";
 import { handleAnswerPoll } from "../actions/common";
 import { PieChart } from 'react-minimal-pie-chart';
-
+import { Navigate } from "react-router-dom";
 
 function Poll({ question, author, answered, pie, answer, dispatch, router, invalidQ }) {
+
+    // const navigate = useNavigate();
 
     const handleChoice = (answer) => {
         dispatch(handleAnswerPoll({
@@ -14,14 +16,8 @@ function Poll({ question, author, answered, pie, answer, dispatch, router, inval
         }))
     }
 
-    if (typeof answered === 'undefined') {
-        window.location = '/';  
-        return;
-    }
-
     if (invalidQ) {
-        window.location = '/error';  
-        return;
+        return <Navigate to="/error" replace />
     }
     
     return (
