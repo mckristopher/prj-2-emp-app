@@ -1,5 +1,3 @@
-![Employee Polls App](/public/images/vote.png)
-
 # Getting Started
 
 Employee Polls app is a tool to encourage employee interaction :mega:. This allows employees to start simple polls, answer polls created by colleagues, view poll results and track the leaderboard :trophy:.
@@ -24,8 +22,12 @@ Here they can enter two options and submit the poll.
 
 The `LeaderBoard` menu will open up the Standing list of employees based on how many polls have been created and answered
 
+
+
 `Note` - The pages can also be accessed by entering the url directly in the address bar. 
 The user will be prompted to login before being redirected to the desired page.
+
+
 
 ## Available Scripts
 
@@ -45,15 +47,19 @@ Launches the test runner in the interactive watch mode.
 
 ## Navigation
 
-### Login - `http://localhost:3000/`
+`Login` - `http://localhost:3000/`
 
-### Home - `http://localhost:3000/home`
+`Home` - `http://localhost:3000/home`
 
-### Leaderboard - `http://localhost:3000/leaderboard`
+`Leaderboard` - `http://localhost:3000/leaderboard`
 
-### New Poll - `http://localhost:3000/add`
+`New Poll` - `http://localhost:3000/add`
 
 
-### Attribution
+## Attribution
 
 Icons were downloaded from <a href='https://www.freepik.com/'> www.freepik.com</a>
+
+
+
+<img src="/public/images/vote.png" width="200px" height="200px"/>
