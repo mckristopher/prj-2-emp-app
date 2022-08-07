@@ -1,8 +1,37 @@
-# Getting Started
+# Employee Poll App
 
 Employee Polls app is a tool to encourage employee interaction :mega:. This allows employees to start simple polls, answer polls created by colleagues, view poll results and track the leaderboard :trophy:.
 
-## Features
+<img src="/public/images/vote.png" width="200px" height="200px"/>
+
+
+## Getting Started
+
+The App can be set up by following the installation instruction below. Also find a list of the features of the app.
+
+### Installation
+
+Once you clone the repo, run
+
+`npm install`
+
+This command is mandatory to install the necessary dependencies for the project to run smoothly.
+
+Next, you can run
+
+`npm start`
+
+to get the app running on the machine
+
+Once you see the message in your terminal : <em>webpack compiled successfully</em>
+
+You should now be able to access the app at
+
+`http://localhost:3000` or the closest available port.
+
+
+
+### Features
 
 #### Login
 
@@ -56,10 +85,14 @@ Launches the test runner in the interactive watch mode.
 `New Poll` - `http://localhost:3000/add`
 
 
+## Author
+
+[Mercy Christopher](https://github.com/mckristopher)
+
+
 ## Attribution
 
 Icons were downloaded from <a href='https://www.freepik.com/'> www.freepik.com</a>
 
 
 
-<img src="/public/images/vote.png" width="200px" height="200px"/>
